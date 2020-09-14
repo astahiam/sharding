@@ -82,10 +82,8 @@ public class ShardingApplication implements CommandLineRunner {
 	}
 
 	private String updateScript() {
-		//String basicScript1 = "UPDATE accumulate_queue set processed = 'T' WHERE queue_id in (SELECT row_key FROM idt_unique );";
 		String basicScript1 = "DELETE FROM accumulate_queue WHERE processed = 'F';";
 		return splitPhysicalTable(basicScript1, 2);
-		//return splitPhysicalTable2(basicScript1, 1, 12);
 	}
 
 	private String splitPhysicalTable(String basicScript1, int tableNamePosition){
